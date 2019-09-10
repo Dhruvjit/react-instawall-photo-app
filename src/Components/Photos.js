@@ -19,8 +19,6 @@ const Photos = (props) => {
 
 // validation if the proptypes are not satisfied
 Photos.propTypes = {
-    // array here corresponds to prop type that post posses in Main.js
-    posts: PropTypes.object.isRequired,
     // func here corresponds to function prop type that onRemovePhoto posses in Main.js
     onRemovePhoto: PropTypes.func.isRequired
 };
