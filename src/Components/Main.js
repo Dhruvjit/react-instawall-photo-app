@@ -26,7 +26,7 @@ class Main extends Component {
                 imageLink: "https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2017/08/24/104670887-VacationExplainsTHUMBWEB.1910x1000.jpg"
             }],
             /* we use this state variable to display different screens based on react routing */
-            screen: 'photos' // photos, addphotos
+            screen: 'photos' // photos, addPhoto
         };
 
         /* this bind function is useful because the value of this is `undefined` when
@@ -37,6 +37,7 @@ class Main extends Component {
         */
 
         this.removePhoto = this.removePhoto.bind(this);
+        this.navigate = this.navigate.bind(this);
     }
 
     /* this is 2nd lifecycle method which gets invoked after component is inserted in the DOM */
@@ -60,11 +61,16 @@ class Main extends Component {
     * It also has two properties, prevProps and prevState which is inbuilt in react
     * */
     componentDidUpdate(prevProps,prevState){
-        console.log("re-rendered");
-        console.log(prevState.posts);
-        console.log(this.state);
+        // console.log("re-rendered");
+        //         // console.log(prevState.posts);
+        //         // console.log(this.state);
     }
 
+    navigate(){
+        this.setState({
+            screen: 'addPhoto'
+        });
+    }
     /*
     * send this function as reference to Instawall to delete photo
     * */
@@ -79,9 +85,24 @@ class Main extends Component {
     render(){
         return(
             <div>
-                <Title title={"Instawall"}/>
-                <Instawall posts={this.state.posts} onRemovePhoto={this.removePhoto}/>
-                <AddPhoto/>
+                {
+                    // conditional statement which says if state.screen equals to photos only then render the following <div>
+                    this.state.screen === 'photos' &&
+                    (<div>
+                            <Title title={"Instawall"}/>
+                            <Instawall
+                                posts={this.state.posts}
+                                onRemovePhoto={this.removePhoto}
+                                onNavigate={this.navigate}
+                            />
+                    </div>)
+                }
+                {
+                    this.state.screen === 'addPhoto' &&
+                    (<div>
+                        <AddPhoto/>
+                    </div>)
+                }
             </div>
         );
     }

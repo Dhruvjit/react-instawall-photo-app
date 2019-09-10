@@ -2,14 +2,19 @@ import React from 'react';
 import Photos from "./Photos";
 import style from './ComponentCss.css'
 import PropTypes from 'prop-types'
-
+import {Link} from 'react-router-dom';
 
 const Instawall = (props) => {
         return (
             // we cannot create multiple elements in return method so wrap everything in one div
             <div>
 
-                <button className={style.addIcon}> + </button>
+                {/* to make use of 'Link' component from react-router module replace 'a' tag with Link component */}
+                <Link className={style.addIcon} onClick={props.onNavigate} to="AddPhoto"/>
+
+                {/*<a className={style.addIcon} onClick={props.onNavigate} href="#AddPhoto"/>*/}
+
+                {/*<button onClick={props.onNavigate} className={style.addIcon}/>*/}
 
                 {/*we need assign css class to this div as it holds our photos (this component is referenced in main.js)*/}
                 <div className={style["photo-grid"]}>
