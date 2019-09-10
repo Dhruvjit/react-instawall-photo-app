@@ -1,0 +1,39 @@
+.photo-grid{
+    max-width: 1000px;
+    font-family: sans-serif;
+    /* vertical margins are 0 (no need), auto here is for centering left and margin by itself*/
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+p{
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+.figure{
+    flex-basis: calc(33.333% - 4rem);
+    border: 2px solid #d3d3d3;
+    padding: 2rem;
+    /* this gives ability to all figure elements to take up equal space in the page container */
+    flex-grow: 1;
+    margin: 0 2rem 2rem;
+}
+
+.photo{
+    width: calc(100% + 4rem);
+    margin: -2rem 0rem 0rem -2rem;
+}
+
+.button-container{
+    display: flex;
+    justify-content: center;
+}
+
+.remove-button{
+    flex-basis: 48%;
+    color: orangered;
+    font-size: 15px;
+    border: 2px solid #f2f2f2;
+    line-height: 2;
+    padding: 5px;
+}
