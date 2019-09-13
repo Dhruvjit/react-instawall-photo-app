@@ -6,6 +6,11 @@ const htmlWebpackPlugin = new HtmlWebPackPlugin({
 });
 
 module.exports = {
+    // devserver is configured to handle react router path
+    devServer: {
+        historyApiFallback: true,
+        hot: true
+    },
     module: {
         rules: [
             {
